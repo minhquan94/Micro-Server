@@ -1,0 +1,82 @@
+<div class="login-page" [@routerTransition]>
+    <div class="row justify-content-md-center">
+        <div class="col-md-4">
+            <img class="user-avatar" src="assets/images/logo.png" width="150px" />
+            <h1>{{webTitle}}</h1>
+            <form [formGroup]="signupForm" (ngSubmit)="signup(signupForm)">
+                <div class="form-content">
+                    <div class="form-group">
+                        <input type="text" class="form-control input-underline input-lg" placeholder="Full Name"
+                            formControlName="fullName">
+                    </div>
+
+                    <div class="form-group">
+                        <input type="email" class="form-control input-underline input-lg" placeholder="Email"
+                            formControlName="email">
+                        <div *ngIf="signupForm.controls['email'].invalid && (signupForm.controls['email'].dirty || signupForm.controls['email'].touched)"
+                            class="alert alert-danger">
+                            <div *ngIf="signupForm.controls['email'].errors.required">
+                                Email is required
+                            </div>
+                            <div *ngIf="signupForm.controls['email'].errors.email">
+                                Email must be a valid email address
+                            </div>
+
+                            <div *ngIf="!signupForm.controls['email'].errors.required && !signupForm.controls['email'].errors.email">
+                                Email is invalid
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" class="form-control input-underline input-lg" placeholder="Username"
+                            formControlName="username">
+                        <div *ngIf="signupForm.controls['username'].invalid && (signupForm.controls['username'].dirty || signupForm.controls['username'].touched)"
+                            class="alert alert-danger">
+                            <div *ngIf="signupForm.controls['username'].errors.required">
+                                Username is required
+                            </div>
+                            <div *ngIf="signupForm.controls['username'].errors.minlength">
+                                Username must be at least 5 characters
+                            </div>
+                            <div *ngIf="!signupForm.controls['username'].errors.required && !signupForm.controls['username'].errors.minlength">
+                                Username is invalid
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control input-underline input-lg" placeholder="Password"
+                            formControlName="password">
+                        <div *ngIf="signupForm.controls['password'].invalid && (signupForm.controls['password'].dirty || signupForm.controls['password'].touched)"
+                            class="alert alert-danger">
+                            <div *ngIf="signupForm.controls['password'].errors.required">
+                                Password is required
+                            </div>
+                            <div *ngIf="signupForm.controls['password'].errors.minlength">
+                                Password must be at least 5 characters
+                            </div>
+                            <div *ngIf="!signupForm.controls['password'].errors.required && !signupForm.controls['password'].errors.minlength">
+                                Password is invalid
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control input-underline input-lg" placeholder="Repeat Password"
+                            formControlName="repeatPassword">
+                        <div *ngIf="signupForm.controls['repeatPassword'].invalid && (signupForm.controls['repeatPassword'].dirty || signupForm.controls['repeatPassword'].touched)"
+                            class="alert alert-danger">
+                            <div *ngIf="signupForm.controls['repeatPassword'].errors.required">
+                                Repeat Password required!
+                            </div>
+                            <div *ngIf="!signupForm.controls['repeatPassword'].errors.required">
+                                Repeat Password invalid!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="btn rounded-btn"> Register </button>&nbsp;
+                <button class="btn rounded-btn" [routerLink]="['/login']"> Log in </button>
+            </form>
+        </div>
+    </div>
+</div>

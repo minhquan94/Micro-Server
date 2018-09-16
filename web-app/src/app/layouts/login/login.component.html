@@ -1,0 +1,48 @@
+<div class="login-page" [@routerTransition]>
+    <div class="row justify-content-md-center">
+        <div class="col-md-4">
+            <img src="assets/images/logo.png" width="150px" class="user-avatar" />
+            <h1 class="title-loader" data-heading="webTitle">{{webTitle}}</h1>
+            <form [formGroup]="loginForm" (ngSubmit)="login(loginForm)">
+                <div class="form-content">
+                    <div class="form-group">
+                        <input type="text" ng-model="name" class="form-control input-underline input-lg" placeholder="Username"
+                            formControlName="username">
+                            <div *ngIf="loginForm.controls['username'].invalid && (loginForm.controls['username'].dirty || loginForm.controls['username'].touched)"
+                            class="alert alert-danger">
+                            <div *ngIf="loginForm.controls['username'].errors.required">
+                                Username is required
+                            </div>
+                            <div *ngIf="loginForm.controls['username'].errors.minlength">
+                                Username must be at least 5 characters
+                            </div>
+                            <div *ngIf="!signupForm.controls['username'].errors.required && !signupForm.controls['username'].errors.minlength">
+                                Username is invalid
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="password" class="form-control input-underline input-lg" placeholder="Password"
+                            formControlName="password">
+                        <div *ngIf="loginForm.controls['password'].invalid && (loginForm.controls['password'].dirty || loginForm.controls['password'].touched)"
+                            class="alert alert-danger">
+                            <div *ngIf="loginForm.controls['password'].errors.required">
+                                Password is required
+                            </div>
+                            <div *ngIf="loginForm.controls['password'].errors.minlength">
+                                Password must be at least 5 characters
+                            </div>
+                            <div *ngIf="!signupForm.controls['password'].errors.required && !signupForm.controls['password'].errors.minlength">
+                                Password is invalid
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="btn rounded-btn" [routerLink]="['/']"> Log in </button>
+                &nbsp;
+                <button class="btn rounded-btn" [routerLink]="['/signup']">Register</button>
+            </form>
+        </div>
+    </div>
+</div>

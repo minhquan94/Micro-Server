@@ -1,0 +1,68 @@
+$topnav-background-color: #222;
+:host {
+    .navbar {
+        background-color: $topnav-background-color;
+        .navbar-brand {
+            color: #fff;
+            
+        }
+        .title-loader {
+            background: url(../../../assets/images/bg-title.jpg);
+            -webkit-background-clip: text;
+            background-size: contain;
+            text-align: center;
+            color: transparent;
+            font-weight: 900;
+            &::before {
+                content: attr(data-heading);
+                position: absolute;
+                background: linear-gradient(45deg, rgba(255,255,255,0) 45%,rgba(255,255,255,0.8) 50%,rgba(255,255,255,0) 55%,rgba(255,255,255,0) 100%);
+                -webkit-background-clip: text;
+                color: transparent;
+                mix-blend-mode: screen;
+                animation: shine 1s infinite;
+                background-size: 200%;
+                text-shadow: 
+                    2px 2px 10px rgba(#000, 0.2),
+                    -2px 2px 10px rgba(#000, 0.2),
+                    -2px -2px 10px rgba(#000, 0.2);
+          }
+        }
+        .nav-item > a {
+            color: #999;
+            &:hover {
+                color: #fff;
+            }
+        }
+    }
+    .messages {
+        width: 300px;
+        .media {
+            border-bottom: 1px solid #ddd;
+            padding: 5px 10px;
+            &:last-child {
+                border-bottom: none;
+            }
+        }
+        .media-body {
+            h5 {
+                font-size: 13px;
+                font-weight: 600;
+            }
+            .small {
+                margin: 0;
+            }
+            .last {
+                font-size: 12px;
+                margin: 0;
+            }
+        }
+    }
+
+    
+}
+
+@keyframes shine {
+	0% {background-position: -100%;}
+	100% {background-position: 100%;}
+}
